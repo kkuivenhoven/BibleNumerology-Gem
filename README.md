@@ -1,5 +1,6 @@
 # BibleNumerology-Gem
 This gem is an unofficial wrapper for Mark H. Lane's Bible based numerical interpretations. This gem contains interpretations or meanings for numbers 1-693. Please visit Mark H. Lane's site, [here](https://biblenumbersforlife.com), for more study information on each numerical interpretation.
+<br>
 [![Bible Numerology](https://badge.fury.io/rb/bible_numerology.svg)](https://badge.fury.io/rb/bible_numerology)
 
 ## Getting Started
