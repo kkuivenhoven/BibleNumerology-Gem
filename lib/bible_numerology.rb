@@ -10,9 +10,13 @@ class BibleNumerology
 	end
 
 	def self.init
-		path = "https://raw.githubusercontent.com/kkuivenhoven/BibleNumerology/master/nums.csv"
-		CSV.new(open(path)).each do |numLine|
-			@allNumbers[numLine[0].to_i] = numLine[1]
+		pathOne = "https://raw.githubusercontent.com/kkuivenhoven/BibleNumerology/master/nums.csv"
+		CSV.new(open(pathOne)).each do |numLineOne|
+			@allNumbers[numLineOne[0].to_i] = numLineOne[1]
+		end
+		pathTwo = "https://raw.githubusercontent.com/kkuivenhoven/BibleNumerology/master/lastNums.csv"
+		CSV.new(open(pathTwo)).each do |numLineTwo|
+			@allNumbers[numLineTwo[0].to_i] = numLineTwo[1]
 		end
 		return "init complete"
 	end
@@ -22,19 +26,21 @@ class BibleNumerology
 	end	
 
 	def self.getAllMeaningsOnly
-		return @allNumbers.values.map! { |e| e.gsub("_", " ") }
+		return @allNumbers.values.map! { |e| (e.nil? ? e : e.gsub("_", " ")) }
 	end	
 
 	def self.getAllNumsMeanings
 		@allNums = Hash.new
 		@allNumbers.each do |num, meaning|
-			@allNums[num] = meaning.gsub("_", " ")
+			if !meaning.nil?
+				@allNums[num] = meaning.gsub("_", " ")
+			end
 		end
 		return @allNums
 	end	
 
 	def self.getNum(num)
-		return @allNumbers[num].gsub("_", " ")
+		return @allNumbers[num].nil? ? @allNumbers[num] : @allNumbers[num].gsub("_", " ")
 	end	
 
 end
