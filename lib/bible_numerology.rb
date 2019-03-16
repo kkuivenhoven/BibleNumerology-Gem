@@ -26,7 +26,11 @@ class BibleNumerology
 	end	
 
 	def self.getAllNumsMeanings
-		return @allNumbers
+		@allNums = Hash.new
+		@allNumbers.each do |num, meaning|
+			@allNums[num] = meaning.gsub("_", " ")
+		end
+		return @allNums
 	end	
 
 	def self.getNum(num)
